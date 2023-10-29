@@ -18,7 +18,7 @@ public class SortTester {
   // | Globals |
   // +---------+
 
-  Sorter sorter;
+  Sorter sorter = MergeSort.SORTER;
 
   // +-------+-------------------------------------------------------
   // | Tests |
@@ -34,7 +34,7 @@ public class SortTester {
     String[] original = { "alpha", "bravo", "charlie", "delta", "foxtrot" };
     String[] expected = original.clone();
     sorter.sort(original, (x, y) -> x.compareTo(y));
-    assertArrayEquals(original, expected);
+    assertArrayEquals(expected, original);
   } // orderedStringTest
 
   @Test
@@ -42,7 +42,16 @@ public class SortTester {
     String[] original = { "foxtrot", "delta", "charlie", "bravo", "alpha" };
     String[] expected = { "alpha", "bravo", "charlie", "delta", "foxtrot" };
     sorter.sort(original, (x, y) -> x.compareTo(y));
-    assertArrayEquals(original, expected);
-  } // orderedStringTest
+    assertEquals(expected, original);
+  } // reverseOrderedStringTest
+
+  @Test
+  public void integerUnorderedTest(){
+    Integer[] original = { 5, 6, 1, 19, 3, 7 };
+    Integer[] expected = { 1, 3, 5, 6, 7, 19 };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(expected, original);
+  } // intergerUnorderedTest
+
 
 } // class SortTester
