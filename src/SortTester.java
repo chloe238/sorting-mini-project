@@ -18,7 +18,7 @@ public class SortTester {
   // | Globals |
   // +---------+
 
-  Sorter sorter = ChloeKellySort.SORTER;
+  Sorter sorter;
 
   // +-------+-------------------------------------------------------
   // | Tests |
