@@ -1,36 +1,21 @@
 import java.util.Comparator;
 
 /**
- * Sort using Quicksort.
+ * My own sorting algorithm. Which is actually quicksort with a median pivot (I think)
+ * Algorithms are hard.
  *
  * @author Chloe Kelly
- * @author Samuel A. Rebelsky 
  */
 
-public class Quicksort implements Sorter {
+public class ChloeKellySort extends Quicksort {
 
-  // +--------+------------------------------------------------------
-  // | Fields |
-  // +--------+
-
-  /**
-   * The one sorter you can access.
-   */
-  public static Sorter SORTER = new Quicksort();
-
-  // +--------------+------------------------------------------------
-  // | Constructors |
-  // +--------------+
+  public static Sorter SORTER = new ChloeKellySort();
 
   /**
    * Create a sorter.
    */
-  Quicksort() {
-  } // Quicksort()
-
-  // +---------+-----------------------------------------------------
-  // | Methods |
-  // +---------+
+  ChloeKellySort() {
+  } // ChloeKellySort()
 
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
@@ -67,7 +52,7 @@ public class Quicksort implements Sorter {
    */
   static <T> int partition(T[] vals, Comparator<? super T> order, int lb, int ub) {
     //Pick pivot
-    int mid = lb + (ub - lb)/2;
+    int mid = median(vals, lb, ub, order);
     //init small and large
     int small = lb+1;
     int large = ub-1;
@@ -96,4 +81,19 @@ public class Quicksort implements Sorter {
     vals[j] = tmp;
   } // swap(T[], int, int)
 
-} // class Quicksort
+  /**
+   * Find th median value of three in the array
+   */
+  private static <T> int median(T[] vals, int left, int right, Comparator<? super T> order){
+    int mid = left + (right - left)/2;
+    if(order.compare(vals[left], vals[mid]) < 0){
+      if(order.compare(vals[mid], vals[right-1]) >= 0){
+        return right-1;
+      } else {
+        return mid;
+      }
+    } else {
+      return left;
+    }
+  }
+} // class ChloeKellySort

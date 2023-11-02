@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests of Sorter objects.
  *
- * @author Your Name
+ * @author Chloe Kelly
  */
 public class SortTester {
 
@@ -18,7 +18,7 @@ public class SortTester {
   // | Globals |
   // +---------+
 
-  Sorter sorter = MergeSort.SORTER;
+  Sorter sorter = ChloeKellySort.SORTER;
 
   // +-------+-------------------------------------------------------
   // | Tests |

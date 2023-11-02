@@ -36,7 +36,7 @@ public class MergeSort implements Sorter {
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
     mergeSort(values, order, 0, values.length);
-  } // sort(T[], Comparator<? super T>
+  } // sort(T[], Comparator<? super T>)
 
   private static <T> void mergeSort(T[] values, Comparator<? super T> order, int lo, int hi){
     if(hi - lo > 1){   
@@ -48,15 +48,19 @@ public class MergeSort implements Sorter {
 
       //merge
       merge(values, lo, mid, hi, order);
-    }
-  }
+    }//if
+  }// mergeSort
 
+  /**
+   * 
+   * Merge two "subarrays" determined by their bounds
+   */
   static <T> void merge(T[] vals, int lo, int mid, int hi, Comparator<? super T> comparator) {
-    // STUB
     T[] left = Arrays.copyOfRange(vals, lo, mid);
     T[] right = Arrays.copyOfRange(vals, mid, hi);
-    int l = 0, r = 0, i = 0; 
+    int l = 0, r = 0, i = lo; 
 
+    //Add values from temp arrays based on comparator
     while(l < left.length && r < right.length){  
       if(comparator.compare(left[l], right[r]) <= 0){
         vals[i] = left[l];
@@ -65,20 +69,22 @@ public class MergeSort implements Sorter {
       else {
         vals[i] = right[r];
         r++;
-      }
+      }// if/else
       i++;
-    }
+    }//while
 
+    //Copy any remaining vals from left
     while(l < left.length){
       vals[i] = left[l];
       i++;
       l++;
-    }
+    }//while
 
+    //Copy any remaining vals from right
     while(r < right.length){
       vals[i] = right[r];
       i++;
       r++;
-    }
+    } //while
   } // merge
 } // class MergeSort
