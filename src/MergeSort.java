@@ -39,7 +39,7 @@ public class MergeSort implements Sorter {
   } // sort(T[], Comparator<? super T>
 
   private static <T> void mergeSort(T[] values, Comparator<? super T> order, int lo, int hi){
-    if(hi - lo <= 1){   
+    if(hi - lo > 1){   
       int mid = lo + (hi-lo)/2;
       
       //recursive call for both sides
