@@ -42,7 +42,7 @@ public class SortTester {
     String[] original = { "foxtrot", "delta", "charlie", "bravo", "alpha" };
     String[] expected = { "alpha", "bravo", "charlie", "delta", "foxtrot" };
     sorter.sort(original, (x, y) -> x.compareTo(y));
-    assertEquals(expected, original);
+    assertArrayEquals(expected, original);
   } // reverseOrderedStringTest
 
   @Test
@@ -50,7 +50,7 @@ public class SortTester {
     Integer[] original = { 5, 6, 1, 19, 3, 7 };
     Integer[] expected = { 1, 3, 5, 6, 7, 19 };
     sorter.sort(original, (x, y) -> x.compareTo(y));
-    assertEquals(expected, original);
+    assertArrayEquals(expected, original);
   } // intergerUnorderedTest
 
   @Test
@@ -66,7 +66,7 @@ public class SortTester {
     Double[] original = {5.5, 5.2, 2.3, 7.6, 5.5, 2.3, 7.6, 5.2};
     Double[] expected = {2.3, 2.3, 5.2, 5.2, 5.5, 5.5, 7.6, 7.6};
     sorter.sort(original, (x, y) -> x.compareTo(y));
-    assertEquals(expected, original);
+    assertArrayEquals(expected, original);
   } // duplicateVals
 
   @Test
@@ -90,6 +90,6 @@ public class SortTester {
     String[] original = { "this", "should", "have", "a", "lot", "of", "words", "to", "sort", "hopefully", "i", "can", "sort", "it", "correctly" };
     String[] expected = { "a", "can", "correctly", "have", "hopefully", "i", "it", "lot", "of", "should", "sort", "sort", "this", "to", "words" };
     sorter.sort(original, (x, y) -> x.compareTo(y));
-    assertEquals(expected, original);
+    assertArrayEquals(expected, original);
   }
 } // class SortTester

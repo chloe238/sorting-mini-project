@@ -39,12 +39,12 @@ public class MergeSort implements Sorter {
   } // sort(T[], Comparator<? super T>
 
   private static <T> void mergeSort(T[] values, Comparator<? super T> order, int lo, int hi){
-    if(lo < hi){   
+    if(hi - lo <= 1){   
       int mid = lo + (hi-lo)/2;
       
       //recursive call for both sides
       mergeSort(values, order, lo, mid);
-      mergeSort(values, order, mid+1, hi);
+      mergeSort(values, order, mid, hi);
 
       //merge
       merge(values, lo, mid, hi, order);
@@ -55,7 +55,7 @@ public class MergeSort implements Sorter {
     // STUB
     T[] left = Arrays.copyOfRange(vals, lo, mid);
     T[] right = Arrays.copyOfRange(vals, mid, hi);
-    int l = 0, r = 0, i = lo; 
+    int l = 0, r = 0, i = 0; 
 
     while(l < left.length && r < right.length){  
       if(comparator.compare(left[l], right[r]) <= 0){
