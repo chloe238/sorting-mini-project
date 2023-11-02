@@ -38,25 +38,26 @@ public class MergeSort implements Sorter {
     mergeSort(values, order, 0, values.length);
   } // sort(T[], Comparator<? super T>
 
-  static <T> void mergeSort(T[] values, Comparator<? super T> order, int lo, int hi){
-    if(values.length < 2){
-      return;
-    }   
-    int mid = lo + (hi-lo)/2;
-    T[] left = Arrays.copyOfRange(values, lo, mid);
-    T[] right = Arrays.copyOfRange(values, mid+1, hi);
-    
-    mergeSort(left, order, 0, left.length);
-    mergeSort(right, order, 0, right.length);
-    merge(values, lo, mid, hi, order);
+  private static <T> void mergeSort(T[] values, Comparator<? super T> order, int lo, int hi){
+    if(lo < hi){   
+      int mid = lo + (hi-lo)/2;
+      
+      //recursive call for both sides
+      mergeSort(values, order, lo, mid);
+      mergeSort(values, order, mid+1, hi);
+
+      //merge
+      merge(values, lo, mid, hi, order);
+    }
   }
 
   static <T> void merge(T[] vals, int lo, int mid, int hi, Comparator<? super T> comparator) {
     // STUB
     T[] left = Arrays.copyOfRange(vals, lo, mid);
-    T[] right = Arrays.copyOfRange(vals, mid+1, hi);
-    int l = 0, r = 0, i = 0; 
-    while(l < left.length-1 || r < right.length-1){  
+    T[] right = Arrays.copyOfRange(vals, mid, hi);
+    int l = 0, r = 0, i = lo; 
+
+    while(l < left.length && r < right.length){  
       if(comparator.compare(left[l], right[r]) <= 0){
         vals[i] = left[l];
         l++;
@@ -66,6 +67,18 @@ public class MergeSort implements Sorter {
         r++;
       }
       i++;
+    }
+
+    while(l < left.length){
+      vals[i] = left[l];
+      i++;
+      l++;
+    }
+
+    while(r < right.length){
+      vals[i] = right[r];
+      i++;
+      r++;
     }
   } // merge
 } // class MergeSort

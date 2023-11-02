@@ -50,8 +50,46 @@ public class SortTester {
     Integer[] original = { 5, 6, 1, 19, 3, 7 };
     Integer[] expected = { 1, 3, 5, 6, 7, 19 };
     sorter.sort(original, (x, y) -> x.compareTo(y));
-    assertArrayEquals(expected, original);
+    assertEquals(expected, original);
   } // intergerUnorderedTest
 
+  @Test
+  public void emptyArray(){
+    Integer[] original = {};
+    Integer[] expected = {};
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(expected, original);
+  } // emptyArray
 
+  @Test
+  public void duplicateVals(){
+    Double[] original = {5.5, 5.2, 2.3, 7.6, 5.5, 2.3, 7.6, 5.2};
+    Double[] expected = {2.3, 2.3, 5.2, 5.2, 5.5, 5.5, 7.6, 7.6};
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertEquals(expected, original);
+  } // duplicateVals
+
+  @Test
+  public void singleVal(){
+    String[] original = {"All Alone"};
+    String[] expected = {"All Alone"};
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(expected, original);
+  }// singleVal
+
+  @Test
+  public void mostlySameValues(){
+    Integer[] original = {5, 5, 5, 5, 5, 1, 5, 5, 5};
+    Integer[] expected = {1, 5, 5, 5, 5, 5, 5, 5, 5};
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertArrayEquals(expected, original);
+  }// mostlySameValues
+
+  @Test
+  public void longStringArray(){
+    String[] original = { "this", "should", "have", "a", "lot", "of", "words", "to", "sort", "hopefully", "i", "can", "sort", "it", "correctly" };
+    String[] expected = { "a", "can", "correctly", "have", "hopefully", "i", "it", "lot", "of", "should", "sort", "sort", "this", "to", "words" };
+    sorter.sort(original, (x, y) -> x.compareTo(y));
+    assertEquals(expected, original);
+  }
 } // class SortTester
